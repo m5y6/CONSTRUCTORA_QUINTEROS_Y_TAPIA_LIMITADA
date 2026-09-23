@@ -6,7 +6,9 @@ import './App.css';
 export default function App() {
   const { empresa, proyectos } = dataEmpresa;
   
-  // Estados para doble filtro: Sector (todos, publico, privado) y Tipo específico
+  // Estados de filtrado y búsqueda
+  const [busqueda, setBusqueda] = useState('');
+  const [ordenFecha, setOrdenFecha] = useState('desc'); // 'desc' = más reciente primero, 'asc' = más antigua
   const [filtroSector, setFiltroSector] = useState('todos');
   const [filtroTipo, setFiltroTipo] = useState('todos');
 
@@ -23,6 +25,13 @@ export default function App() {
     return mapaImagenes[proyecto.id] && mapaImagenes[proyecto.id].length > 0
       ? mapaImagenes[proyecto.id]
       : [proyecto.imagen];
+  };
+
+  // Función para abrir la dirección directamente en Google Maps
+  const abrirEnMaps = (e, ubicacion) => {
+    e.stopPropagation();
+    const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ubicacion)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   // Carrusel Hero: selección inicial al azar
@@ -63,7 +72,7 @@ export default function App() {
     }, 250);
   };
 
-  // Estado del Modal / Lightbox
+  // Modal / Lightbox
   const [proyectoModal, setProyectoModal] = useState(null);
   const [indiceFotoModal, setIndiceFotoModal] = useState(0);
 
@@ -79,22 +88,46 @@ export default function App() {
 
   const fotosModal = proyectoModal ? obtenerImagenesProyecto(proyectoModal) : [];
 
-  // Obtener lista única de tipos de obras para los botones de filtro
+  // Lista de tipos de obras únicos para botones
   const tiposDisponibles = useMemo(() => {
     const tiposSet = new Set(proyectos.map((p) => p.tipo).filter(Boolean));
     return Array.from(tiposSet);
   }, [proyectos]);
 
-  // Filtrado combinado de la grilla (Sector + Tipo)
-  const proyectosFiltrados = proyectos.filter((p) => {
-    const matchSector = filtroSector === 'todos' || p.categoria === filtroSector;
-    const matchTipo = filtroTipo === 'todos' || p.tipo === filtroTipo;
-    return matchSector && matchTipo;
-  });
+  // Auxiliar para extraer el año de inicio para el ordenamiento
+  const extraerAnioInicio = (periodoStr) => {
+    if (!periodoStr) return 0;
+    const match = periodoStr.match(/\d{4}/);
+    return match ? parseInt(match[0], 10) : 0;
+  };
+
+  // Filtrado múltiple + Búsqueda por texto + Orden cronológico
+  const proyectosFiltrados = useMemo(() => {
+    const query = busqueda.trim().toLowerCase();
+
+    return proyectos
+      .filter((p) => {
+        const matchSector = filtroSector === 'todos' || p.categoria === filtroSector;
+        const matchTipo = filtroTipo === 'todos' || p.tipo === filtroTipo;
+        
+        const matchTexto = 
+          query === '' ||
+          p.nombre.toLowerCase().includes(query) ||
+          p.mandante.toLowerCase().includes(query) ||
+          p.ubicacion.toLowerCase().includes(query);
+
+        return matchSector && matchTipo && matchTexto;
+      })
+      .sort((a, b) => {
+        const anioA = extraerAnioInicio(a.periodo);
+        const anioB = extraerAnioInicio(b.periodo);
+        return ordenFecha === 'desc' ? anioB - anioA : anioA - anioB;
+      });
+  }, [proyectos, filtroSector, filtroTipo, busqueda, ordenFecha]);
 
   return (
     <div className="app-container">
-      {/* Navbar a full ancho */}
+      {/* Navbar */}
       <header className="navbar">
         <div className="navbar-brand">
           <span className="brand-badge">Q&T</span>
@@ -115,7 +148,7 @@ export default function App() {
         </nav>
       </header>
 
-      {/* Hero Carrusel a Pantalla Completa */}
+      {/* Hero Carrusel */}
       <section id="destacado" className="hero-carousel-section">
         <div className="carousel-wrapper">
           <div className={`carousel-image-layer ${animandoHero ? 'fade-out' : 'fade-in'}`}>
@@ -170,14 +203,20 @@ export default function App() {
             <div className="carousel-footer-line">
               <span className="carousel-date">{proyectoActual.periodo}</span>
               <button className="btn-expand" onClick={() => abrirModal(proyectoActual)}>
-                Ver Galería Completa ↗
+                Ver Detalles ↗
+              </button>
+              <button
+                className="btn-maps"
+                onClick={(e) => abrirEnMaps(e, proyectoActual.ubicacion)}
+              >
+                📍 Ver en Google Maps
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Sección Institucional y MINVU */}
+      {/* Resumen Institucional y MINVU */}
       <section id="nosotros" className="stats-section">
         <div className="stats-container">
           <div className="section-header">
@@ -209,16 +248,45 @@ export default function App() {
         </div>
       </section>
 
-      {/* Catálogo con Doble Filtro a 100% de Ancho */}
+      {/* Catálogo con Buscador, Filtros y Orden por Fecha */}
       <section id="obras" className="catalog-section">
         <div className="catalog-header">
           <span className="section-tag">Portafolio Integral</span>
           <h2 className="section-heading">Catálogo de Obras</h2>
-          <p className="section-subtext" style={{ margin: '0 auto 20px auto' }}>
-            Explora las ejecuciones de la constructora filtrando por sector y especialidad técnica.
-          </p>
 
-          {/* Filtro 1: Sector (Público / Privado) */}
+          {/* Barra de Búsqueda y Orden Cronológico */}
+          <div className="catalog-controls-bar">
+            <div className="search-input-wrapper">
+              <span className="search-icon">🔍</span>
+              <input
+                type="text"
+                className="search-input"
+                placeholder="Buscar por obra, mandante o dirección (ej. Bomberos, Melipilla, Serrano)..."
+                value={busqueda}
+                onChange={(e) => setBusqueda(e.target.value)}
+              />
+              {busqueda && (
+                <button className="search-clear" onClick={() => setBusqueda('')}>
+                  &times;
+                </button>
+              )}
+            </div>
+
+            <div className="sort-dropdown-wrapper">
+              <label htmlFor="sortDate" className="sort-label">Ordenar:</label>
+              <select
+                id="sortDate"
+                className="sort-select"
+                value={ordenFecha}
+                onChange={(e) => setOrdenFecha(e.target.value)}
+              >
+                <option value="desc">Más recientes primero</option>
+                <option value="asc">Más antiguas primero</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Filtro Sector */}
           <div className="filter-group">
             <span className="filter-label">Sector:</span>
             <div className="filter-tabs">
@@ -238,9 +306,9 @@ export default function App() {
             </div>
           </div>
 
-          {/* Filtro 2: Tipo de Trabajo (Plaza, Pavimentación, Edificación, etc.) */}
-          <div className="filter-group" style={{ marginTop: '12px' }}>
-            <span className="filter-label">Tipo de Obra:</span>
+          {/* Filtro Tipo de Obra */}
+          <div className="filter-group" style={{ marginTop: '10px' }}>
+            <span className="filter-label">Tipo:</span>
             <div className="filter-tabs">
               <button
                 onClick={() => setFiltroTipo('todos')}
@@ -259,9 +327,14 @@ export default function App() {
               ))}
             </div>
           </div>
+
+          {/* Contador de resultados */}
+          <div className="results-counter">
+            Mostrando {proyectosFiltrados.length} {proyectosFiltrados.length === 1 ? 'obra' : 'obras'}
+          </div>
         </div>
 
-        {/* Grilla Expandida al 100% */}
+        {/* Grilla de Proyectos */}
         <div className="projects-grid">
           {proyectosFiltrados.map((p) => {
             const fotosCard = obtenerImagenesProyecto(p);
@@ -310,13 +383,23 @@ export default function App() {
         </div>
 
         {proyectosFiltrados.length === 0 && (
-          <div style={{ textAlign: 'center', padding: '60px 0', color: 'var(--text-muted)' }}>
-            No se encontraron proyectos con los filtros seleccionados.
+          <div className="empty-results">
+            <p>No se encontraron obras con los términos o filtros seleccionados.</p>
+            <button
+              className="btn-clear-filters"
+              onClick={() => {
+                setBusqueda('');
+                setFiltroSector('todos');
+                setFiltroTipo('todos');
+              }}
+            >
+              Restablecer Filtros
+            </button>
           </div>
         )}
       </section>
 
-      {/* Modal / Lightbox */}
+      {/* Modal / Lightbox con Botón de Google Maps */}
       {proyectoModal && (
         <div className="modal-backdrop" onClick={cerrarModal}>
           <div className="modal-window" onClick={(e) => e.stopPropagation()}>
@@ -369,6 +452,15 @@ export default function App() {
               <p><strong>Ubicación:</strong> {proyectoModal.ubicacion}</p>
               {proyectoModal.superficie && <p><strong>Superficie:</strong> {proyectoModal.superficie}</p>}
               <p><strong>Período de ejecución:</strong> {proyectoModal.periodo}</p>
+
+              <div className="modal-actions">
+                <button
+                  className="btn-maps modal-maps-btn"
+                  onClick={(e) => abrirEnMaps(e, proyectoModal.ubicacion)}
+                >
+                  📍 Ir a Google Maps
+                </button>
+              </div>
             </div>
           </div>
         </div>

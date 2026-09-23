@@ -1,10 +1,9 @@
 :root {
-  /* Paleta Corporativa / Ingeniería (Azul Acero & Titanio) */
-  --primary: #0284c7;             /* Azul Técnico */
-  --primary-hover: #0369a1;       /* Azul profundo */
-  --primary-light: #38bdf8;       /* Celeste brillante para detalles */
-  --bg-dark: #0b0f19;             /* Fondo base profundo */
-  --card-bg: rgba(15, 23, 42, 0.88); /* Azul noche translúcido */
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-light: #38bdf8;
+  --bg-dark: #0b0f19;
+  --card-bg: rgba(15, 23, 42, 0.88);
   --border-color: rgba(51, 65, 85, 0.7);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
@@ -23,13 +22,13 @@ body {
   overflow-x: hidden;
 }
 
-/* Contenedor principal con la imagen de fondo fija y capa de legibilidad */
+/* Fondo con ruta web directa sin prefijo public */
 .app-container {
   width: 100%;
   min-height: 100vh;
   background-image: 
     linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.92)),
-    url("public/images/fondo_Hormigon.jpg"); /* Cambia el nombre si es .png o .webp */
+    url("/images/fondo_Hormigon.jpg");
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -207,21 +206,9 @@ body {
   border-radius: 4px;
 }
 
-.badge-pill.publico { 
-  background: #1d4ed8; 
-  color: #fff; 
-}
-
-.badge-pill.privado { 
-  background: #0ea5e9; 
-  color: #0f172a; 
-}
-
-.badge-pill.badge-type { 
-  background: rgba(255, 255, 255, 0.1); 
-  color: #e2e8f0; 
-  border: 1px solid var(--border-color); 
-}
+.badge-pill.publico { background: #1d4ed8; color: #fff; }
+.badge-pill.privado { background: #0ea5e9; color: #0f172a; }
+.badge-pill.badge-type { background: rgba(255, 255, 255, 0.1); color: #e2e8f0; border: 1px solid var(--border-color); }
 
 .badge-photos {
   font-size: 0.75rem;
@@ -257,8 +244,9 @@ body {
 .carousel-footer-line {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   margin-top: 20px;
+  flex-wrap: wrap;
 }
 
 .carousel-date {
@@ -282,6 +270,30 @@ body {
   background: var(--primary); 
   color: #fff; 
   border-color: var(--primary);
+}
+
+/* Botón Google Maps */
+.btn-maps {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  color: var(--primary-light);
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  backdrop-filter: blur(6px);
+}
+
+.btn-maps:hover {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  transform: translateY(-1px);
 }
 
 /* Sección Institucional */
@@ -385,7 +397,7 @@ body {
   color: var(--text-muted);
 }
 
-/* Catálogo de Obras */
+/* Catálogo & Controles */
 .catalog-section {
   width: 100%;
   padding: 50px clamp(16px, 4vw, 50px) 80px;
@@ -397,6 +409,120 @@ body {
   width: 100%;
 }
 
+/* Barra de Buscador y Orden */
+.catalog-controls-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 24px auto 16px auto;
+  max-width: 900px;
+  flex-wrap: wrap;
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 280px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+.search-input {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  padding: 12px 40px 12px 38px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  backdrop-filter: blur(8px);
+}
+
+.search-input:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+}
+
+.search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.search-clear:hover {
+  color: #fff;
+}
+
+.sort-dropdown-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.sort-select {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  padding: 11px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.sort-select:focus {
+  border-color: var(--primary-light);
+}
+
+.results-counter {
+  font-size: 0.85rem;
+  color: var(--primary-light);
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+.empty-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+.btn-clear-filters {
+  background: var(--primary);
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+/* Filtros */
 .filter-group {
   display: flex;
   flex-direction: column;
@@ -694,6 +820,17 @@ body {
 
 .modal-info strong { color: #fff; }
 
+.modal-actions {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-color);
+}
+
+.modal-maps-btn {
+  padding: 10px 18px;
+  font-size: 0.9rem;
+}
+
 /* Footer */
 .footer {
   border-top: 1px solid var(--border-color);
@@ -725,4 +862,5 @@ body {
   .carousel-info-card { left: 16px; bottom: 20px; right: 16px; }
   .modal-gallery { height: 260px; }
   .navbar { padding: 0 16px; }
+  .catalog-controls-bar { flex-direction: column; align-items: stretch; }
 }
