@@ -2,41 +2,113 @@
   {
     "proyectoId": 1,
     "imagenes": [
-      "https://images.unsplash.com/photo-1541888946425-d0fbb1861564?q=80&w=1200",
-      "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?q=80&w=1200"
+      "/images/plaza_centenario/plaza-1.jpeg",
+      "/images/plaza_centenario/plaza-2.jpeg",
+      "/images/plaza_centenario/plaza-3.jpeg",
+      "/images/plaza_centenario/plaza-4.jpeg",
+      "/images/plaza_centenario/plaza-5.jpeg",
+      "/images/plaza_centenario/plaza-6.jpeg",
+      "/images/plaza_centenario/plaza-7.jpeg",
+      "/images/plaza_centenario/plaza-8.jpeg",
+      "/images/plaza_centenario/plaza-9.jpeg",
+      "/images/plaza_centenario/plaza-10.jpeg",
+      "/images/plaza_centenario/plaza-11.jpeg",
+      "/images/plaza_centenario/plaza-12.jpeg",
+      "/images/plaza_centenario/plaza-13.jpeg",
+      "/images/plaza_centenario/plaza-14.jpeg",
+      "/images/plaza_centenario/plaza-15.jpeg",
+      "/images/plaza_centenario/plaza-16.jpeg",
+      "/images/plaza_centenario/plaza-17.jpeg",
+      "/images/plaza_centenario/plaza-18.jpeg",
+      "/images/plaza_centenario/plaza-19.jpeg",
+      "/images/plaza_centenario/plaza-20.jpeg",
+      "/images/plaza_centenario/plaza-21.jpeg",
+      "/images/plaza_centenario/plaza-22.jpeg"
     ]
   },
   {
     "proyectoId": 2,
     "imagenes": [
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200",
-      "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=1200"
+      "/images/Cuerpo_Bombero_s1_Cia_Melipilla/bomb1.png"
     ]
   },
   {
     "proyectoId": 3,
     "imagenes": [
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200",
-      "https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=1200"
+      "/images/edificio_sol_andino/sol1.png"
     ]
   },
   {
     "proyectoId": 4,
     "imagenes": [
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200"
+      "/images/liceo_gabriela_mistral/mistral1.png"
+    ]
+  },
+  {
+    "proyectoId": 5,
+    "imagenes": [
+      "/images/Dependencias_Edificio_Corporativo/corpo1.png",
+      "/images/Dependencias_Edificio_Corporativo/corpo2.png"
     ]
   },
   {
     "proyectoId": 6,
     "imagenes": [
-      "https://images.unsplash.com/photo-1555636222-cae831e670b3?q=80&w=1200",
-      "https://images.unsplash.com/photo-1519643381401-22c77e60520e?q=80&w=1200"
+      "/images/Strip_Center_Santa_Teresa/strip1.png"
     ]
   },
   {
     "proyectoId": 7,
     "imagenes": [
-      "https://images.unsplash.com/photo-1541888946425-d0fbb1861564?q=80&w=1200"
+      "/images/laboratorios_CD_Enea/laboratorio1.png"
+    ]
+  },
+  {
+    "proyectoId": 8,
+    "imagenes": [
+      "/images/Construccion_Edificio_Droguería_Municipal/drogue1.png"
+    ]
+  },
+  {
+    "proyectoId": 9,
+    "imagenes": [
+      "/images/pavimentos_diversos/pavimento1.png"
+    ]
+  },
+  {
+    "proyectoId": 10,
+    "imagenes": [
+      "/images/Escuela_Basica_Ramon_Noguera/ramon1.png"
+    ]
+  },
+  {
+    "proyectoId": 12,
+    "imagenes": [
+      "/images/supermercado_santa_teresa/teresa1.png"
+    ]
+  },
+  {
+    "proyectoId": 13,
+    "imagenes": [
+      "/images/galeria_martita_romanini/martita1.png"
+    ]
+  },
+  {
+    "proyectoId": 18,
+    "imagenes": [
+      "/images/Pavimentacion_Estacionamiento_Strip_Center_Santa_Teresa/pavi1.png"
+    ]
+  },
+  {
+    "proyectoId": 24,
+    "imagenes": [
+      "/images/Contención_Escuela_Huilco_Alto/huilco1.png"
+    ]
+  },
+  {
+    "proyectoId": 40,
+    "imagenes": [
+      "/images/edificio_sol_andino/sol1.png"
     ]
   }
 ]
