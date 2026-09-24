@@ -27,8 +27,8 @@ body {
   width: 100%;
   min-height: 100vh;
   background-image: 
-    linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.92)),
-    url("/images/fondo_Hormigon.jpg");
+
+    url("/images/plaza-15.jpeg");
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -339,11 +339,11 @@ body {
 }
 
 .metric-box {
-  background: var(--card-bg);
+
   border: 1px solid var(--border-color);
   padding: 24px;
   border-radius: 10px;
-  backdrop-filter: blur(10px);
+
 }
 
 .metric-number {
@@ -359,11 +359,8 @@ body {
 }
 
 .minvu-panel {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
   border-radius: 14px;
   padding: 28px;
-  backdrop-filter: blur(10px);
 }
 
 .minvu-title {

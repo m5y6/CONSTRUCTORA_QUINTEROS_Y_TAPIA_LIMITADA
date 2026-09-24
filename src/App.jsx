@@ -148,73 +148,7 @@ export default function App() {
         </nav>
       </header>
 
-      {/* Hero Carrusel */}
-      <section id="destacado" className="hero-carousel-section">
-        <div className="carousel-wrapper">
-          <div className={`carousel-image-layer ${animandoHero ? 'fade-out' : 'fade-in'}`}>
-            <img
-              src={fotosActuales[indiceFotoHero]}
-              alt={proyectoActual.nombre}
-              className="carousel-main-image"
-              onError={(e) => {
-                e.currentTarget.src = 'https://images.unsplash.com/photo-1541888946425-d0fbb1861564?q=80&w=1200';
-              }}
-            />
-            <div className="carousel-overlay" />
-          </div>
-
-          <button
-            className="carousel-arrow arrow-left"
-            onClick={() => cambiarProyecto('ant')}
-            aria-label="Obra anterior"
-          >
-            &#10094;
-          </button>
-          <button
-            className="carousel-arrow arrow-right"
-            onClick={() => cambiarProyecto('sig')}
-            aria-label="Siguiente obra"
-          >
-            &#10095;
-          </button>
-
-          <div className="carousel-info-card">
-            <div className="info-badges">
-              <span className={`badge-pill ${proyectoActual.categoria}`}>
-                {proyectoActual.categoria === 'publico' ? 'Obra Pública' : 'Obra Privada'}
-              </span>
-              {proyectoActual.tipo && (
-                <span className="badge-pill badge-type">{proyectoActual.tipo}</span>
-              )}
-              {fotosActuales.length > 1 && (
-                <span className="badge-photos">
-                  Foto {indiceFotoHero + 1} / {fotosActuales.length}
-                </span>
-              )}
-            </div>
-
-            <h1 className="carousel-title">{proyectoActual.nombre}</h1>
-            <p className="carousel-mandante">Mandante: {proyectoActual.mandante}</p>
-            <p className="carousel-location">📍 {proyectoActual.ubicacion}</p>
-            {proyectoActual.superficie && (
-              <p className="carousel-surface">📐 Superficie: {proyectoActual.superficie}</p>
-            )}
-
-            <div className="carousel-footer-line">
-              <span className="carousel-date">{proyectoActual.periodo}</span>
-              <button className="btn-expand" onClick={() => abrirModal(proyectoActual)}>
-                Ver Detalles ↗
-              </button>
-              <button
-                className="btn-maps"
-                onClick={(e) => abrirEnMaps(e, proyectoActual.ubicacion)}
-              >
-                📍 Ver en Google Maps
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Resumen Institucional y MINVU */}
       <section id="nosotros" className="stats-section">
