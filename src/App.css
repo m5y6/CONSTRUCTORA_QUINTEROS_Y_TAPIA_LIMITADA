@@ -4,7 +4,6 @@
   --primary-light: #38bdf8;
   --bg-dark: #07090e;
   
-  /* Estilo base idéntico a Registros MINVU: ultra translúcido y cristalino */
   --glass-bg: rgba(11, 15, 25, 0.28);
   --glass-border: rgba(255, 255, 255, 0.15);
   --glass-blur: blur(10px);
@@ -27,7 +26,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Fondo continuo y limpio */
 .app-container {
   width: 100%;
   min-height: 100vh;
@@ -41,7 +39,6 @@ body {
   flex-direction: column;
 }
 
-/* Clase base que replica el estilo del MINVU */
 .glass-panel {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -51,7 +48,7 @@ body {
 }
 
 /* ========================================================
-   HEADER / NAVBAR (RESTAURADO EXACTO A COMO ESTABA)
+   HEADER / NAVBAR
    ======================================================== */
 .navbar {
   position: sticky;
@@ -62,7 +59,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 clamp(20px, 4vw, 60px);
+  padding: 0 clamp(16px, 4vw, 60px);
   background: rgba(11, 15, 25, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(51, 65, 85, 0.7);
@@ -85,9 +82,19 @@ body {
 
 .brand-text {
   font-weight: 800;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   letter-spacing: 0.5px;
   color: #ffffff;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 4px;
 }
 
 .nav-links {
@@ -116,6 +123,7 @@ body {
   border-radius: 6px;
   box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
   transition: transform 0.2s, background 0.2s !important;
+  text-align: center;
 }
 
 .btn-whatsapp:hover {
@@ -124,15 +132,15 @@ body {
 }
 
 /* ========================================================
-   SECCIÓN INSTITUCIONAL: PRESENTACIÓN Y MÉTRICAS
+   SECCIÓN INSTITUCIONAL
    ======================================================== */
 .stats-section {
   width: 100%;
-  padding: 50px clamp(16px, 4vw, 60px) 20px;
+  padding: 40px clamp(16px, 4vw, 60px) 20px;
 }
 
 .main-intro-panel {
-  padding: 40px;
+  padding: clamp(24px, 4vw, 40px);
   border-radius: 16px;
   margin-bottom: 24px;
   text-align: left;
@@ -142,7 +150,7 @@ body {
   display: inline-block;
   color: var(--primary-light);
   text-transform: uppercase;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 1.5px;
   margin-bottom: 10px;
@@ -150,45 +158,46 @@ body {
 }
 
 .section-heading {
-  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
   font-weight: 800;
   margin: 0 0 16px;
   color: #ffffff;
   text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  line-height: 1.2;
 }
 
 .section-subtext {
   color: var(--text-muted);
   max-width: 900px;
-  line-height: 1.7;
-  font-size: 1.05rem;
+  line-height: 1.6;
+  font-size: 1rem;
   margin: 0;
   text-shadow: 0 1px 3px rgba(0,0,0,0.7);
 }
 
 .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
   margin-bottom: 24px;
   width: 100%;
 }
 
 .metric-box {
-  padding: 24px;
+  padding: 20px;
   border-radius: 14px;
 }
 
 .metric-number {
   display: block;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 900;
   color: var(--primary-light);
   text-shadow: 0 2px 4px rgba(0,0,0,0.6);
 }
 
 .metric-label {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: #e2e8f0;
   font-weight: 600;
   text-shadow: 0 1px 2px rgba(0,0,0,0.6);
@@ -199,13 +208,13 @@ body {
    ======================================================== */
 .minvu-panel {
   border-radius: 16px;
-  padding: 30px;
+  padding: clamp(20px, 3vw, 30px);
 }
 
 .minvu-title {
   color: #ffffff;
   margin: 0 0 20px;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -214,8 +223,8 @@ body {
 
 .minvu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
 }
 
 .minvu-item {
@@ -229,23 +238,23 @@ body {
 
 .minvu-code {
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0,0,0,0.7);
 }
 
 .minvu-cat {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: #cbd5e1;
   font-weight: 500;
 }
 
 /* ========================================================
-   CATÁLOGO: ZONAS DE FILTROS TRANSLÚCIDAS
+   CATÁLOGO Y FILTROS
    ======================================================== */
 .catalog-section {
   width: 100%;
-  padding: 50px clamp(16px, 4vw, 60px) 80px;
+  padding: 40px clamp(16px, 4vw, 60px) 80px;
 }
 
 .catalog-header {
@@ -253,7 +262,7 @@ body {
   border: none !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
-  padding: 0 0 30px 0;
+  padding: 0 0 24px 0;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -262,15 +271,14 @@ body {
   text-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
 
-/* Barra de Buscador y Orden en cápsula translúcida */
 .catalog-controls-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
-  margin: 24px auto 16px auto;
+  gap: 14px;
+  margin: 20px auto 14px auto;
   max-width: 960px;
-  padding: 14px 20px;
+  padding: 12px 18px;
   border-radius: 14px;
   flex-wrap: wrap;
 }
@@ -278,7 +286,7 @@ body {
 .search-input-wrapper {
   position: relative;
   flex: 1;
-  min-width: 280px;
+  min-width: 240px;
 }
 
 .search-icon {
@@ -295,9 +303,9 @@ body {
   background: rgba(11, 15, 25, 0.4);
   border: 1px solid var(--glass-border);
   color: #fff;
-  padding: 12px 40px 12px 38px;
+  padding: 11px 36px 11px 36px;
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   outline: none;
   backdrop-filter: var(--glass-blur);
   transition: all 0.2s;
@@ -338,7 +346,7 @@ body {
   background: rgba(11, 15, 25, 0.4);
   border: 1px solid var(--glass-border);
   color: #fff;
-  padding: 11px 16px;
+  padding: 10px 14px;
   border-radius: 8px;
   font-size: 0.85rem;
   font-weight: 600;
@@ -347,16 +355,15 @@ body {
   backdrop-filter: var(--glass-blur);
 }
 
-/* Zonas de Filtro (Sector y Tipo) en Cápsula Translúcida */
 .filter-zone {
   max-width: 960px;
   margin: 0 auto;
-  padding: 12px 20px;
+  padding: 12px 16px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -381,10 +388,10 @@ body {
   background: rgba(11, 15, 25, 0.4);
   border: 1px solid var(--glass-border);
   color: #f1f5f9;
-  padding: 7px 15px;
+  padding: 7px 14px;
   border-radius: 6px;
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s;
@@ -404,16 +411,16 @@ body {
 }
 
 .results-counter {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--primary-light);
   font-weight: 700;
-  margin-top: 18px;
+  margin-top: 16px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.7);
 }
 
 .empty-results {
   text-align: center;
-  padding: 50px 20px;
+  padding: 40px 20px;
   border-radius: 14px;
 }
 
@@ -429,12 +436,12 @@ body {
 }
 
 /* ========================================================
-   TARJETAS DEL CATÁLOGO (TRANSLÚCIDAS)
+   GRILLA DE TARJETAS
    ======================================================== */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
   width: 100%;
 }
 
@@ -449,14 +456,14 @@ body {
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: rgba(56, 189, 248, 0.5);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
 }
 
 .card-thumb {
   position: relative;
-  height: 220px;
+  height: 210px;
   background: #090c14;
 }
 
@@ -468,7 +475,7 @@ body {
 }
 
 .project-card:hover .card-thumb img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .card-badge {
@@ -478,7 +485,7 @@ body {
   font-size: 0.7rem;
   font-weight: 800;
   text-transform: uppercase;
-  padding: 5px 10px;
+  padding: 4px 8px;
   border-radius: 4px;
 }
 
@@ -497,7 +504,7 @@ body {
 }
 
 .card-body {
-  padding: 22px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -521,13 +528,13 @@ body {
 }
 
 .card-surface-tag {
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   color: var(--text-muted);
   font-weight: 600;
 }
 
 .card-title {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   margin: 0 0 6px;
   color: #fff;
   font-weight: 700;
@@ -535,26 +542,26 @@ body {
 }
 
 .card-client {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   color: var(--primary-light);
   font-weight: 600;
   margin: 0 0 8px;
 }
 
 .card-meta {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   margin: 0 0 4px;
 }
 
 .card-footer {
   border-top: 1px solid var(--glass-border);
-  padding-top: 14px;
-  margin-top: 16px;
+  padding-top: 12px;
+  margin-top: 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: #cbd5e1;
 }
 
@@ -565,11 +572,11 @@ body {
 
 /* Badges */
 .badge-pill {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: 4px;
 }
 .badge-pill.publico { background: #1d4ed8; color: #fff; }
@@ -586,7 +593,7 @@ body {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(5, 7, 12, 0.75);
+  background: rgba(5, 7, 12, 0.82);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   z-index: 200;
@@ -609,17 +616,17 @@ body {
 
 .modal-close {
   position: absolute;
-  top: 16px;
-  right: 18px;
-  background: rgba(0, 0, 0, 0.6);
+  top: 14px;
+  right: 14px;
+  background: rgba(0, 0, 0, 0.65);
   border: 1px solid var(--glass-border);
   color: #fff;
   font-size: 1.8rem;
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 50;
+  z-index: 60;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -661,14 +668,14 @@ body {
   background: rgba(15, 23, 42, 0.75);
   border: 1px solid var(--glass-border);
   color: #fff;
-  width: 50px;
-  height: 50px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   transition: background 0.2s;
   z-index: 10;
 }
@@ -677,16 +684,16 @@ body {
   background: var(--primary);
 }
 
-.modal-nav.prev { left: 20px; }
-.modal-nav.next { right: 20px; }
+.modal-nav.prev { left: 16px; }
+.modal-nav.next { right: 16px; }
 
 .modal-thumbnails-strip {
   position: absolute;
-  bottom: 16px;
+  bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
+  gap: 8px;
   background: rgba(0, 0, 0, 0.65);
   padding: 6px 12px;
   border-radius: 10px;
@@ -697,20 +704,21 @@ body {
 }
 
 .thumb-item {
-  width: 54px;
-  height: 38px;
+  width: 50px;
+  height: 36px;
   border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
   border: 2px solid transparent;
   opacity: 0.6;
+  flex-shrink: 0;
   transition: all 0.2s;
 }
 
 .thumb-item.active {
   border-color: var(--primary-light);
   opacity: 1;
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 .thumb-item img {
@@ -720,7 +728,7 @@ body {
 }
 
 .modal-info-fullscreen {
-  padding: 40px;
+  padding: clamp(20px, 3vw, 40px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -729,28 +737,28 @@ body {
 }
 
 .modal-info-fullscreen h2 {
-  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+  font-size: clamp(1.4rem, 2vw, 2.1rem);
   color: #ffffff;
-  margin: 10px 0 24px;
+  margin: 10px 0 20px;
   line-height: 1.2;
 }
 
 .modal-specs-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .spec-row {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 12px;
+  padding-bottom: 10px;
 }
 
 .spec-label {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--primary-light);
@@ -758,14 +766,14 @@ body {
 }
 
 .spec-value {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: #f8fafc;
   font-weight: 500;
 }
 
 .modal-actions-bar {
-  margin-top: 30px;
-  padding-top: 20px;
+  margin-top: 24px;
+  padding-top: 18px;
   border-top: 1px solid var(--glass-border);
 }
 
@@ -773,7 +781,7 @@ body {
   background: rgba(15, 23, 42, 0.6);
   border: 1px solid var(--primary-light);
   color: var(--primary-light);
-  padding: 12px 20px;
+  padding: 12px 18px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.95rem;
@@ -798,7 +806,7 @@ body {
   border-top: 1px solid var(--glass-border);
   padding: 40px 20px;
   text-align: center;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
   width: 100%;
   margin-top: auto;
@@ -819,24 +827,106 @@ body {
   to { opacity: 1; transform: scale(1); }
 }
 
-@media (max-width: 900px) {
-  .modal-window-fullscreen {
-    height: 95vh;
-    overflow-y: auto;
+/* ========================================================
+   MEDIA QUERIES MÓVILES (TELÉFONOS Y TABLETS)
+   ======================================================== */
+@media (max-width: 850px) {
+  /* Navbar móvil */
+  .mobile-menu-toggle {
+    display: block;
   }
+
+  .nav-links {
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+    background: rgba(11, 15, 25, 0.98);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(51, 65, 85, 0.7);
+    flex-direction: column;
+    padding: 24px;
+    gap: 18px;
+    display: none;
+  }
+
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .btn-whatsapp {
+    width: 100%;
+  }
+
+  /* Catálogo y controles */
+  .catalog-controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sort-dropdown-wrapper {
+    justify-content: space-between;
+  }
+
+  .sort-select {
+    flex: 1;
+  }
+
+  .filter-zone {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+  }
+
+  .filter-tabs {
+    justify-content: flex-start;
+  }
+
+  /* Grilla en 1 sola columna fluida */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Modal en móvil: Vertical con scroll fluido */
+  .modal-backdrop {
+    padding: 0;
+  }
+
+  .modal-window-fullscreen {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .modal-content-grid {
     grid-template-columns: 1fr;
     height: auto;
+    display: flex;
+    flex-direction: column;
   }
+
   .modal-gallery-fullscreen {
-    height: 45vh;
+    height: 48vh;
+    min-height: 280px;
+    flex-shrink: 0;
   }
+
   .modal-info-fullscreen {
     border-left: none;
     border-top: 1px solid var(--glass-border);
-    padding: 24px;
+    padding: 20px;
+    height: auto;
+    overflow: visible;
   }
-  .navbar { padding: 0 16px; }
-  .filter-zone { flex-direction: column; }
-  .catalog-controls-bar { flex-direction: column; align-items: stretch; }
+
+  .modal-close {
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    font-size: 1.5rem;
+    background: rgba(0, 0, 0, 0.85);
+  }
 }

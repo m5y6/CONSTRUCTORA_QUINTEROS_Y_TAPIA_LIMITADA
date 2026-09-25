@@ -6,6 +6,9 @@ import './App.css';
 export default function App() {
   const { empresa, proyectos } = dataEmpresa;
   
+  // Menú móvil
+  const [menuAbierto, setMenuAbierto] = useState(false);
+
   // Estados de filtrado y búsqueda
   const [busqueda, setBusqueda] = useState('');
   const [ordenFecha, setOrdenFecha] = useState('desc');
@@ -40,11 +43,13 @@ export default function App() {
   const abrirModal = (p) => {
     setProyectoModal(p);
     setIndiceFotoModal(0);
+    document.body.style.overflow = 'hidden'; // Evita scroll de fondo en móvil
   };
 
   const cerrarModal = () => {
     setProyectoModal(null);
     setIndiceFotoModal(0);
+    document.body.style.overflow = 'auto';
   };
 
   const fotosModal = proyectoModal ? obtenerImagenesProyecto(proyectoModal) : [];
@@ -85,20 +90,31 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {/* Navbar con efecto Glassmorphism */}
+      {/* Navbar con botón hamburguesa para móviles */}
       <header className="navbar">
         <div className="navbar-brand">
           <span className="brand-badge">Q&T</span>
           <span className="brand-text">{empresa.nombreCorto}</span>
         </div>
-        <nav className="nav-links">
-          <a href="#nosotros">Nosotros</a>
-          <a href="#obras">Catálogo</a>
+
+        {/* Botón menú móvil */}
+        <button
+          className="mobile-menu-toggle"
+          onClick={() => setMenuAbierto(!menuAbierto)}
+          aria-label="Abrir menú"
+        >
+          {menuAbierto ? '✕' : '☰'}
+        </button>
+
+        <nav className={`nav-links ${menuAbierto ? 'nav-open' : ''}`}>
+          <a href="#nosotros" onClick={() => setMenuAbierto(false)}>Nosotros</a>
+          <a href="#obras" onClick={() => setMenuAbierto(false)}>Catálogo</a>
           <a
             href={`https://wa.me/${empresa.telefono.replace(/[^0-9]/g, '')}`}
             target="_blank"
             rel="noreferrer"
             className="btn-whatsapp"
+            onClick={() => setMenuAbierto(false)}
           >
             Cotizar Obra
           </a>
@@ -141,7 +157,7 @@ export default function App() {
           <span className="section-tag">Portafolio Integral</span>
           <h2 className="section-heading">Catálogo de Obras</h2>
 
-          {/* Barra de Búsqueda y Orden en Cápsula Translúcida */}
+          {/* Barra de Búsqueda y Orden en Cápsula */}
           <div className="catalog-controls-bar glass-panel">
             <div className="search-input-wrapper">
               <span className="search-icon">🔍</span>
@@ -167,13 +183,13 @@ export default function App() {
                 value={ordenFecha}
                 onChange={(e) => setOrdenFecha(e.target.value)}
               >
-                <option value="desc">Más recientes primero</option>
-                <option value="asc">Más antiguas primero</option>
+                <option value="desc">Más recientes</option>
+                <option value="asc">Más antiguas</option>
               </select>
             </div>
           </div>
 
-          {/* Filtro 1: Sector en Cápsula Translúcida */}
+          {/* Filtro Sector en Cápsula */}
           <div className="filter-zone glass-panel">
             <span className="filter-label">Sector:</span>
             <div className="filter-tabs">
@@ -193,7 +209,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* Filtro 2: Tipo de Obra en Cápsula Translúcida */}
+          {/* Filtro Tipo de Obra en Cápsula */}
           <div className="filter-zone glass-panel" style={{ marginTop: '12px' }}>
             <span className="filter-label">Tipo de Obra:</span>
             <div className="filter-tabs">
@@ -285,14 +301,14 @@ export default function App() {
         )}
       </section>
 
-      {/* Modal Pantalla Completa (100% Ancho y Gran Escala) */}
+      {/* Modal Panorámico Fullscreen adaptado a teléfono */}
       {proyectoModal && (
         <div className="modal-backdrop" onClick={cerrarModal}>
           <div className="modal-window-fullscreen glass-panel" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={cerrarModal}>&times;</button>
 
             <div className="modal-content-grid">
-              {/* Columna Izquierda: Galería Panorámica */}
+              {/* Galería Panorámica */}
               <div className="modal-gallery-fullscreen">
                 <img
                   src={fotosModal[indiceFotoModal]}
@@ -315,7 +331,6 @@ export default function App() {
                       &#10095;
                     </button>
                     
-                    {/* Tiras de Miniaturas */}
                     <div className="modal-thumbnails-strip">
                       {fotosModal.map((img, i) => (
                         <div
@@ -331,37 +346,39 @@ export default function App() {
                 )}
               </div>
 
-              {/* Columna Derecha: Ficha Técnica */}
+              {/* Ficha Técnica */}
               <div className="modal-info-fullscreen">
-                <div className="info-badges" style={{ marginBottom: '14px' }}>
-                  <span className={`badge-pill ${proyectoModal.categoria}`}>
-                    {proyectoModal.categoria === 'publico' ? 'Obra Pública' : 'Obra Privada'}
-                  </span>
-                  {proyectoModal.tipo && (
-                    <span className="badge-pill badge-type">{proyectoModal.tipo}</span>
-                  )}
-                </div>
-
-                <h2>{proyectoModal.nombre}</h2>
-
-                <div className="modal-specs-list">
-                  <div className="spec-row">
-                    <span className="spec-label">Mandante:</span>
-                    <span className="spec-value">{proyectoModal.mandante}</span>
+                <div>
+                  <div className="info-badges" style={{ marginBottom: '14px' }}>
+                    <span className={`badge-pill ${proyectoModal.categoria}`}>
+                      {proyectoModal.categoria === 'publico' ? 'Obra Pública' : 'Obra Privada'}
+                    </span>
+                    {proyectoModal.tipo && (
+                      <span className="badge-pill badge-type">{proyectoModal.tipo}</span>
+                    )}
                   </div>
-                  <div className="spec-row">
-                    <span className="spec-label">Ubicación:</span>
-                    <span className="spec-value">📍 {proyectoModal.ubicacion}</span>
-                  </div>
-                  {proyectoModal.superficie && (
+
+                  <h2>{proyectoModal.nombre}</h2>
+
+                  <div className="modal-specs-list">
                     <div className="spec-row">
-                      <span className="spec-label">Superficie:</span>
-                      <span className="spec-value">📐 {proyectoModal.superficie}</span>
+                      <span className="spec-label">Mandante:</span>
+                      <span className="spec-value">{proyectoModal.mandante}</span>
                     </div>
-                  )}
-                  <div className="spec-row">
-                    <span className="spec-label">Período de ejecución:</span>
-                    <span className="spec-value">{proyectoModal.periodo}</span>
+                    <div className="spec-row">
+                      <span className="spec-label">Ubicación:</span>
+                      <span className="spec-value">📍 {proyectoModal.ubicacion}</span>
+                    </div>
+                    {proyectoModal.superficie && (
+                      <div className="spec-row">
+                        <span className="spec-label">Superficie:</span>
+                        <span className="spec-value">📐 {proyectoModal.superficie}</span>
+                      </div>
+                    )}
+                    <div className="spec-row">
+                      <span className="spec-label">Período de ejecución:</span>
+                      <span className="spec-value">{proyectoModal.periodo}</span>
+                    </div>
                   </div>
                 </div>
 
@@ -380,7 +397,7 @@ export default function App() {
       )}
 
       {/* Footer */}
-      <footer className="footer glass-panel">
+      <footer className="footer">
         <p className="footer-title">{empresa.nombre} — RUT: {empresa.rut}</p>
         <p className="footer-meta">{empresa.direccion} | Fono: {empresa.telefono}</p>
         <p className="footer-copy">© {new Date().getFullYear()} Constructora Quinteros y Tapia Limitada.</p>
