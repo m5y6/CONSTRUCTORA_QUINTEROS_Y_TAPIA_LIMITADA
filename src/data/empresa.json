@@ -41,7 +41,10 @@
       "periodo": "Junio 2025 - Junio 2026",
       "superficie": "13.234 m²",
       "destacado": true,
-      "imagen": "/images/proyectos/plaza-centenario.jpg"
+      "imagen": "/images/proyectos/plaza-centenario.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 2,
@@ -53,7 +56,10 @@
       "periodo": "Agosto 2023 - Octubre 2024",
       "superficie": "687,75 m²",
       "destacado": true,
-      "imagen": "/images/proyectos/bomberos-melipilla.jpg"
+      "imagen": "/images/proyectos/bomberos-melipilla.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 3,
@@ -65,7 +71,10 @@
       "periodo": "Junio 2012 - Diciembre 2013",
       "superficie": "3.017 m²",
       "destacado": true,
-      "imagen": "/images/proyectos/edificio-sol-andino.jpg"
+      "imagen": "/images/proyectos/edificio-sol-andino.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 4,
@@ -77,7 +86,10 @@
       "periodo": "Septiembre 2015 - Octubre 2016",
       "superficie": "1.446 m²",
       "destacado": true,
-      "imagen": "/images/proyectos/edificio-corporacion.jpg"
+      "imagen": "/images/proyectos/edificio-corporacion.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 5,
@@ -89,7 +101,10 @@
       "periodo": "Abril 2012 - Enero 2013",
       "superficie": "3.361 m²",
       "destacado": true,
-      "imagen": "/images/proyectos/liceo-gabriela-mistral.jpg"
+      "imagen": "/images/proyectos/liceo-gabriela-mistral.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 6,
@@ -101,7 +116,10 @@
       "periodo": "Octubre 2018 - Diciembre 2019",
       "superficie": "705 m²",
       "destacado": true,
-      "imagen": "/images/proyectos/strip-center-santa-teresa.jpg"
+      "imagen": "/images/proyectos/strip-center-santa-teresa.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 7,
@@ -113,7 +131,10 @@
       "periodo": "Diciembre 2009 - Diciembre 2010",
       "superficie": "1.800 m² (5 niveles, 1 subterráneo)",
       "destacado": true,
-      "imagen": "/images/proyectos/super-pastel.jpg"
+      "imagen": "/images/proyectos/super-pastel.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 8,
@@ -125,7 +146,10 @@
       "periodo": "Abril 2020 - Diciembre 2020",
       "superficie": "307 m²",
       "destacado": false,
-      "imagen": "/images/proyectos/drogueria-municipal.jpg"
+      "imagen": "/images/proyectos/drogueria-municipal.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 9,
@@ -137,7 +161,10 @@
       "periodo": "Octubre 2014 - Junio 2015",
       "superficie": "5.805 m²",
       "destacado": false,
-      "imagen": "/images/proyectos/pavimentos-melipilla.jpg"
+      "imagen": "/images/proyectos/pavimentos-melipilla.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 10,
@@ -149,7 +176,10 @@
       "periodo": "Marzo 2022 - Octubre 2022",
       "superficie": null,
       "destacado": false,
-      "imagen": "/images/proyectos/escuela-ramon-noguera.jpg"
+      "imagen": "/images/proyectos/escuela-ramon-noguera.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 11,
@@ -161,7 +191,10 @@
       "periodo": "Abril 2018 - Septiembre 2018",
       "superficie": "680 m²",
       "destacado": true,
-      "imagen": "/images/proyectos/laboratorios-kn.jpg"
+      "imagen": "/images/proyectos/laboratorios-kn.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 12,
@@ -173,7 +206,10 @@
       "periodo": "Octubre 2010 - Agosto 2011",
       "superficie": "780 m²",
       "destacado": false,
-      "imagen": "/images/proyectos/supermercado-santa-teresa.jpg"
+      "imagen": "/images/proyectos/supermercado-santa-teresa.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 13,
@@ -185,7 +221,10 @@
       "periodo": "Mayo 2010 - Julio 2011",
       "superficie": "682 m²",
       "destacado": false,
-      "imagen": "/images/proyectos/galeria-martita-romanini.jpg"
+      "imagen": "/images/proyectos/galeria-martita-romanini.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 14,
@@ -197,7 +236,10 @@
       "periodo": "Enero 2021 - Octubre 2021",
       "superficie": null,
       "destacado": false,
-      "imagen": "/images/proyectos/jardin-capullitos.jpg"
+      "imagen": "/images/proyectos/jardin-capullitos.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 15,
@@ -209,7 +251,10 @@
       "periodo": "Abril 2015 - Octubre 2015",
       "superficie": "130 m²",
       "destacado": false,
-      "imagen": "/images/proyectos/sala-cuna-trencito.jpg"
+      "imagen": "/images/proyectos/sala-cuna-trencito.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 16,
@@ -221,7 +266,10 @@
       "periodo": "Julio 2017 - Septiembre 2017",
       "superficie": null,
       "destacado": false,
-      "imagen": "/images/proyectos/escuela-lidia-matte.jpg"
+      "imagen": "/images/proyectos/escuela-lidia-matte.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 17,
@@ -233,7 +281,10 @@
       "periodo": "Abril 2025 - Mayo 2025",
       "superficie": "598 m²",
       "destacado": false,
-      "imagen": "/images/proyectos/acceso-alhue.jpg"
+      "imagen": "/images/proyectos/acceso-alhue.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 18,
@@ -245,32 +296,12 @@
       "periodo": "Septiembre 2019 - Febrero 2020",
       "superficie": "1.245 m²",
       "destacado": false,
-      "imagen": "/images/proyectos/estacionamiento-strip-center.jpg"
+      "imagen": "/images/proyectos/estacionamiento-strip-center.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
-    {
-      "id": 19,
-      "nombre": "Vivienda Unifamiliar Carlos Musri",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Sr. Carlos Musri",
-      "ubicacion": "Loteo Santa Josefina, Los Maitenes, Melipilla",
-      "periodo": "Julio 2018 - Octubre 2019",
-      "superficie": "405 m²",
-      "destacado": false,
-      "imagen": "/images/proyectos/vivienda-carlos-musri.jpg"
-    },
-    {
-      "id": 20,
-      "nombre": "Vivienda Unifamiliar García-Maureira",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Sr. Juan García",
-      "ubicacion": "Loteo Santa Julia, Melipilla",
-      "periodo": "Octubre 2016 - Mayo 2018",
-      "superficie": "388 m²",
-      "destacado": false,
-      "imagen": "/images/proyectos/vivienda-garcia.jpg"
-    },
+    
     {
       "id": 21,
       "nombre": "Condominio Arza",
@@ -281,7 +312,10 @@
       "periodo": "Octubre 2013 - Diciembre 2014",
       "superficie": "490 m²",
       "destacado": false,
-      "imagen": "/images/proyectos/condominio-arza.jpg"
+      "imagen": "/images/proyectos/condominio-arza.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 22,
@@ -293,7 +327,10 @@
       "periodo": "Octubre 2021 - Mayo 2022",
       "superficie": "155 m²",
       "destacado": false,
-      "imagen": "/images/proyectos/local-ugalde.jpg"
+      "imagen": "/images/proyectos/local-ugalde.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 23,
@@ -305,116 +342,19 @@
       "periodo": "Diciembre 2020 - Mayo 2021",
       "superficie": null,
       "destacado": false,
-      "imagen": "/images/proyectos/molinera-del-rey.jpg"
+      "imagen": "/images/proyectos/molinera-del-rey.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
-    {
-      "id": 24,
-      "nombre": "Muro de Contención Escuela Huilco Alto",
-      "categoria": "publico",
-      "tipo": "Proyectos",
-      "mandante": "Corporación Municipal de Melipilla",
-      "ubicacion": "Las Acacias N° 2160, Melipilla",
-      "periodo": "Julio 2023 - Agosto 2023",
-      "superficie": null,
-      "destacado": false,
-      "imagen": "/images/proyectos/muro-huilco-alto.jpg"
-    },
-    {
-      "id": 25,
-      "nombre": "Construcción Casa Habitación",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Familia Quinteros Tapia",
-      "ubicacion": "Egaña N° 596, Melipilla",
-      "periodo": "Octubre 2007 - Abril 2008",
-      "superficie": "260 m²",
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-25.jpg"
-    },
-    {
-      "id": 26,
-      "nombre": "Reparación Casa Patronal",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Familia Quinteros Tapia",
-      "ubicacion": "San Diego S/N, Melipilla",
-      "periodo": "Junio 2008 - Febrero 2008",
-      "superficie": "220 m²",
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-26.jpg"
-    },
-    {
-      "id": 27,
-      "nombre": "Construcción Vivienda Particular",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Sr. Marcelo Pérez",
-      "ubicacion": "Condominio Los Maitenes, Parcela N° 18, Melipilla",
-      "periodo": "Junio 2008 - Enero 2009",
-      "superficie": "350 m²",
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-27.jpg"
-    },
-    {
-      "id": 28,
-      "nombre": "Construcción Vivienda Particular",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Sr. Clenardo Zepeda",
-      "ubicacion": "Egaña N° 231, Melipilla",
-      "periodo": "Marzo 2009 - Septiembre 2009",
-      "superficie": "240 m²",
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-28.jpg"
-    },
-    {
-      "id": 29,
-      "nombre": "Renovación Tienda Visión Deportes",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Sr. Marcelo Pérez",
-      "ubicacion": "Plaza de Armas S/N, Melipilla",
-      "periodo": "Mayo 2009 - Julio 2009",
-      "superficie": "140 m²",
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-29.jpg"
-    },
-    {
-      "id": 30,
-      "nombre": "Renovación Tienda Visión Deportes",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Sr. Marcelo Pérez",
-      "ubicacion": "Mall Arauco Local N° 46, San Antonio",
-      "periodo": "Julio 2009 - Agosto 2009",
-      "superficie": "110 m²",
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-30.jpg"
-    },
-    {
-      "id": 31,
-      "nombre": "Reconstrucción Casa Habitación",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Terracar Ltda.",
-      "ubicacion": "El Bajo Parcela N° 5, Melipilla",
-      "periodo": "Septiembre 2009 - Noviembre 2009",
-      "superficie": "200 m²",
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-31.jpg"
-    },
-    {
-      "id": 32,
-      "nombre": "Construcción Casa Habitación",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Sr. Cristián Catalán",
-      "ubicacion": "Correa N° 563, Melipilla",
-      "periodo": "Diciembre 2009 - Mayo 2010",
-      "superficie": "150 m²",
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-32.jpg"
-    },
+    
+    
+    
+    
+    
+    
+    
+   
     {
       "id": 33,
       "nombre": "Construcción Casa Orengo",
@@ -425,32 +365,13 @@
       "periodo": "Febrero 2011 - Diciembre 2011",
       "superficie": "340 m²",
       "destacado": false,
-      "imagen": "/images/proyectos/obra-33.jpg"
+      "imagen": "/images/proyectos/obra-33.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
-    {
-      "id": 34,
-      "nombre": "Construcción Casa Habitación",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Sr. Francisco Álvarez",
-      "ubicacion": "Condominio Los Jazmines Lote N° 4, Melipilla",
-      "periodo": "Julio 2011 - Marzo 2012",
-      "superficie": "355 m²",
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-34.jpg"
-    },
-    {
-      "id": 35,
-      "nombre": "Reparación Piscina Municipal",
-      "categoria": "publico",
-      "tipo": "Edificación",
-      "mandante": "Ilustre Municipalidad de Melipilla",
-      "ubicacion": "Parque Municipal, Melipilla",
-      "periodo": "Noviembre 2011 - Diciembre 2011",
-      "superficie": "550 m²",
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-35.jpg"
-    },
+    
+    
     {
       "id": 36,
       "nombre": "Mejoramiento Infraestructura Escolar Escuela Huilco Alto",
@@ -461,7 +382,10 @@
       "periodo": "Marzo 2012 - Mayo 2012",
       "superficie": null,
       "destacado": false,
-      "imagen": "/images/proyectos/obra-36.jpg"
+      "imagen": "/images/proyectos/obra-36.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 37,
@@ -473,7 +397,10 @@
       "periodo": "Marzo 2012 - Mayo 2012",
       "superficie": null,
       "destacado": false,
-      "imagen": "/images/proyectos/obra-37.jpg"
+      "imagen": "/images/proyectos/obra-37.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 38,
@@ -485,7 +412,10 @@
       "periodo": "Septiembre 2013 - Diciembre 2013",
       "superficie": "200 m²",
       "destacado": false,
-      "imagen": "/images/proyectos/obra-38.jpg"
+      "imagen": "/images/proyectos/obra-38.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 39,
@@ -497,20 +427,12 @@
       "periodo": "Diciembre 2013 - Febrero 2014",
       "superficie": "180 m²",
       "destacado": false,
-      "imagen": "/images/proyectos/obra-39.jpg"
+      "imagen": "/images/proyectos/obra-39.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
-    {
-      "id": 40,
-      "nombre": "Remodelación Oficinas Edificio Sol Andino",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Inmobiliaria THENSO S.A.",
-      "ubicacion": "Serrano N° 334, Melipilla",
-      "periodo": "Enero 2015 - Febrero 2015",
-      "superficie": "260 m²",
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-40.jpg"
-    },
+    
     {
       "id": 41,
       "nombre": "Reposición Pavimentos Calle Arza",
@@ -521,7 +443,10 @@
       "periodo": "Julio 2015 - Mayo 2016",
       "superficie": "1.098 m²",
       "destacado": false,
-      "imagen": "/images/proyectos/obra-41.jpg"
+      "imagen": "/images/proyectos/obra-41.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 42,
@@ -533,7 +458,10 @@
       "periodo": "Julio 2015 - Febrero 2016",
       "superficie": "1.711 m²",
       "destacado": false,
-      "imagen": "/images/proyectos/obra-42.jpg"
+      "imagen": "/images/proyectos/obra-42.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 43,
@@ -545,7 +473,10 @@
       "periodo": "Julio 2017 - Febrero 2018",
       "superficie": null,
       "destacado": false,
-      "imagen": "/images/proyectos/obra-43.jpg"
+      "imagen": "/images/proyectos/obra-43.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
     {
       "id": 44,
@@ -557,20 +488,12 @@
       "periodo": "Mayo 2018 - Junio 2018",
       "superficie": null,
       "destacado": false,
-      "imagen": "/images/proyectos/obra-44.jpg"
+      "imagen": "/images/proyectos/obra-44.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
-    {
-      "id": 45,
-      "nombre": "Elaboración Proyecto Estanque AP Cesfam San Manuel",
-      "categoria": "publico",
-      "tipo": "Proyectos",
-      "mandante": "Corporación Municipal de Melipilla",
-      "ubicacion": "Camino San Manuel S/N, Melipilla",
-      "periodo": "Julio 2020 - Agosto 2020",
-      "superficie": null,
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-45.jpg"
-    },
+    
     {
       "id": 46,
       "nombre": "Obras de Mejoramiento Sanitarios Cesfam Florencia",
@@ -581,56 +504,15 @@
       "periodo": "Enero 2021 - Marzo 2021",
       "superficie": null,
       "destacado": false,
-      "imagen": "/images/proyectos/obra-46.jpg"
+      "imagen": "/images/proyectos/obra-46.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     },
-    {
-      "id": 47,
-      "nombre": "Remodelación Vivienda Particular",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Sr. Jorge Núñez",
-      "ubicacion": "Manuel Rodriguez S/N, Melipilla",
-      "periodo": "Diciembre 2021 - Febrero 2022",
-      "superficie": null,
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-47.jpg"
-    },
-    {
-      "id": 48,
-      "nombre": "Pinturas y Reparaciones Vivienda Villa Los Almendros",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Sr. José Aguilar",
-      "ubicacion": "Villa Prat, Melipilla",
-      "periodo": "Julio 2022 - Agosto 2022",
-      "superficie": null,
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-48.jpg"
-    },
-    {
-      "id": 49,
-      "nombre": "Demolición Vivienda",
-      "categoria": "privado",
-      "tipo": "Demolición",
-      "mandante": "Sr. Pedro Massoud",
-      "ubicacion": "Ugalde N° 99, Melipilla",
-      "periodo": "Enero 2023 - Febrero 2023",
-      "superficie": null,
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-49.jpg"
-    },
-    {
-      "id": 50,
-      "nombre": "Reparaciones Vivienda San Manuel",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Sr. Jorge Núñez",
-      "ubicacion": "Localidad de San Manuel, Melipilla",
-      "periodo": "Marzo 2023 - Marzo 2023",
-      "superficie": null,
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-50.jpg"
-    },
+    
+   
+   
+   
     {
       "id": 51,
       "nombre": "Ampliación y Remodelación Parque 14",
@@ -641,19 +523,12 @@
       "periodo": "Noviembre 2022 - Febrero 2023",
       "superficie": null,
       "destacado": false,
-      "imagen": "/images/proyectos/obra-51.jpg"
-    },
-    {
-      "id": 52,
-      "nombre": "Reparaciones Local Comercial Cueto Electricidad",
-      "categoria": "privado",
-      "tipo": "Edificación",
-      "mandante": "Cueto Electricidad Ltda.",
-      "ubicacion": "Silva Chavez N° 562, Melipilla",
-      "periodo": "Marzo 2026 - Abril 2026",
-      "superficie": null,
-      "destacado": false,
-      "imagen": "/images/proyectos/obra-52.jpg"
+      "imagen": "/images/proyectos/obra-51.jpg",
+      "proyecto": "",
+      "elaboroProyecto": false,
+      "esServiu": false
     }
+    
+    
   ]
 }

@@ -35,14 +35,15 @@
   {
     "proyectoId": 4,
     "imagenes": [
-      "/images/liceo_gabriela_mistral/mistral1.png"
+      "/images/Dependencias_Edificio_Corporativo/corpo1.png",
+      "/images/Dependencias_Edificio_Corporativo/corpo2.png"
     ]
   },
   {
     "proyectoId": 5,
     "imagenes": [
-      "/images/Dependencias_Edificio_Corporativo/corpo1.png",
-      "/images/Dependencias_Edificio_Corporativo/corpo2.png"
+      "/images/liceo_gabriela_mistral/mistral1.png"
+      
     ]
   },
   {
@@ -73,6 +74,12 @@
     "proyectoId": 10,
     "imagenes": [
       "/images/Escuela_Basica_Ramon_Noguera/ramon1.png"
+    ]
+  },
+  {
+    "proyectoId": 11,
+    "imagenes": [
+      "/images/laboratorios_CD_Enea/laboratorio1.png"
     ]
   },
   {

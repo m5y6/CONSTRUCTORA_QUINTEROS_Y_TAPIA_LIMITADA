@@ -14,8 +14,9 @@ export default function App() {
   const [ordenFecha, setOrdenFecha] = useState('desc');
   const [filtroSector, setFiltroSector] = useState('todos');
   const [filtroTipo, setFiltroTipo] = useState('todos');
+  const [filtroFirma, setFiltroFirma] = useState('todos'); // 'todos', 'serviu', 'elaborado'
 
-  // Mapa de imágenes por ID de proyecto
+  // Mapa de imágenes por ID
   const mapaImagenes = useMemo(() => {
     const mapa = {};
     dataImagenes.forEach((item) => {
@@ -36,14 +37,14 @@ export default function App() {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  // Modal / Lightbox a Pantalla Completa
+  // Modal Lightbox
   const [proyectoModal, setProyectoModal] = useState(null);
   const [indiceFotoModal, setIndiceFotoModal] = useState(0);
 
   const abrirModal = (p) => {
     setProyectoModal(p);
     setIndiceFotoModal(0);
-    document.body.style.overflow = 'hidden'; // Evita scroll de fondo en móvil
+    document.body.style.overflow = 'hidden';
   };
 
   const cerrarModal = () => {
@@ -65,6 +66,7 @@ export default function App() {
     return match ? parseInt(match[0], 10) : 0;
   };
 
+  // Filtrado combinado
   const proyectosFiltrados = useMemo(() => {
     const query = busqueda.trim().toLowerCase();
 
@@ -73,31 +75,35 @@ export default function App() {
         const matchSector = filtroSector === 'todos' || p.categoria === filtroSector;
         const matchTipo = filtroTipo === 'todos' || p.tipo === filtroTipo;
         
+        let matchFirma = true;
+        if (filtroFirma === 'serviu') matchFirma = !!p.esServiu;
+        if (filtroFirma === 'elaborado') matchFirma = !!p.elaboroProyecto;
+
         const matchTexto = 
           query === '' ||
           p.nombre.toLowerCase().includes(query) ||
           p.mandante.toLowerCase().includes(query) ||
-          p.ubicacion.toLowerCase().includes(query);
+          p.ubicacion.toLowerCase().includes(query) ||
+          (p.proyecto && p.proyecto.toLowerCase().includes(query));
 
-        return matchSector && matchTipo && matchTexto;
+        return matchSector && matchTipo && matchFirma && matchTexto;
       })
       .sort((a, b) => {
         const anioA = extraerAnioInicio(a.periodo);
         const anioB = extraerAnioInicio(b.periodo);
         return ordenFecha === 'desc' ? anioB - anioA : anioA - anioB;
       });
-  }, [proyectos, filtroSector, filtroTipo, busqueda, ordenFecha]);
+  }, [proyectos, filtroSector, filtroTipo, filtroFirma, busqueda, ordenFecha]);
 
   return (
     <div className="app-container">
-      {/* Navbar con botón hamburguesa para móviles */}
+      {/* Navbar */}
       <header className="navbar">
         <div className="navbar-brand">
           <span className="brand-badge">Q&T</span>
           <span className="brand-text">{empresa.nombreCorto}</span>
         </div>
 
-        {/* Botón menú móvil */}
         <button
           className="mobile-menu-toggle"
           onClick={() => setMenuAbierto(!menuAbierto)}
@@ -121,7 +127,7 @@ export default function App() {
         </nav>
       </header>
 
-      {/* Resumen Institucional y MINVU */}
+      {/* Resumen Institucional y SERVIU / MINVU */}
       <section id="nosotros" className="stats-section">
         <div className="glass-panel main-intro-panel">
           <span className="section-tag">Trayectoria y Solidez</span>
@@ -139,7 +145,7 @@ export default function App() {
         </div>
 
         <div className="minvu-panel glass-panel">
-          <h3 className="minvu-title">Registros Vigentes MINVU</h3>
+          <h3 className="minvu-title">Registros Vigentes Serviu / MINVU</h3>
           <div className="minvu-grid">
             {empresa.registrosMinvu.map((r) => (
               <div key={r.codigo} className="minvu-item">
@@ -151,20 +157,20 @@ export default function App() {
         </div>
       </section>
 
-      {/* Catálogo con Buscador, Filtros y Orden por Fecha */}
+      {/* Catálogo con Filtros Avanzados */}
       <section id="obras" className="catalog-section">
         <div className="catalog-header">
           <span className="section-tag">Portafolio Integral</span>
           <h2 className="section-heading">Catálogo de Obras</h2>
 
-          {/* Barra de Búsqueda y Orden en Cápsula */}
+          {/* Barra de Búsqueda y Orden */}
           <div className="catalog-controls-bar glass-panel">
             <div className="search-input-wrapper">
               <span className="search-icon">🔍</span>
               <input
                 type="text"
                 className="search-input"
-                placeholder="Buscar por obra, mandante o dirección..."
+                placeholder="Buscar por obra, mandante, descripción o dirección..."
                 value={busqueda}
                 onChange={(e) => setBusqueda(e.target.value)}
               />
@@ -189,8 +195,33 @@ export default function App() {
             </div>
           </div>
 
-          {/* Filtro Sector en Cápsula */}
+          {/* Filtro Especial: Serviu / Proyecto Elaborado */}
           <div className="filter-zone glass-panel">
+            <span className="filter-label">Alcance y Organismo:</span>
+            <div className="filter-tabs">
+              <button
+                onClick={() => setFiltroFirma('todos')}
+                className={`filter-btn ${filtroFirma === 'todos' ? 'active' : ''}`}
+              >
+                Todas las obras
+              </button>
+              <button
+                onClick={() => setFiltroFirma('serviu')}
+                className={`filter-btn ${filtroFirma === 'serviu' ? 'active' : ''}`}
+              >
+                🏛 Obras SERVIU / MINVU
+              </button>
+              <button
+                onClick={() => setFiltroFirma('elaborado')}
+                className={`filter-btn ${filtroFirma === 'elaborado' ? 'active' : ''}`}
+              >
+                📐 Proyecto y Diseño Elaborado
+              </button>
+            </div>
+          </div>
+
+          {/* Filtro Sector */}
+          <div className="filter-zone glass-panel" style={{ marginTop: '12px' }}>
             <span className="filter-label">Sector:</span>
             <div className="filter-tabs">
               {[
@@ -209,7 +240,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* Filtro Tipo de Obra en Cápsula */}
+          {/* Filtro Tipo de Obra */}
           <div className="filter-zone glass-panel" style={{ marginTop: '12px' }}>
             <span className="filter-label">Tipo de Obra:</span>
             <div className="filter-tabs">
@@ -236,7 +267,7 @@ export default function App() {
           </div>
         </div>
 
-        {/* Grilla de Proyectos */}
+        {/* Grilla de Tarjetas */}
         <div className="projects-grid">
           {proyectosFiltrados.map((p) => {
             const fotosCard = obtenerImagenesProyecto(p);
@@ -255,9 +286,14 @@ export default function App() {
                       e.currentTarget.src = 'https://images.unsplash.com/photo-1541888946425-d0fbb1861564?q=80&w=800';
                     }}
                   />
-                  <span className={`card-badge ${p.categoria}`}>
-                    {p.categoria === 'publico' ? 'Público' : 'Privado'}
-                  </span>
+                  <div className="card-badge-container">
+                    <span className={`card-badge ${p.categoria}`}>
+                      {p.categoria === 'publico' ? 'Público' : 'Privado'}
+                    </span>
+                    {p.esServiu && <span className="card-badge badge-serviu">SERVIU</span>}
+                    {p.elaboroProyecto && <span className="card-badge badge-design">Diseño Q&T</span>}
+                  </div>
+
                   {fotosCard.length > 1 && (
                     <span className="card-counter">+{fotosCard.length} fotos</span>
                   )}
@@ -272,6 +308,11 @@ export default function App() {
                     <h3 className="card-title">{p.nombre}</h3>
                     <p className="card-client">{p.mandante}</p>
                     <p className="card-meta">📍 {p.ubicacion}</p>
+                    {p.proyecto && (
+                      <p className="card-scope-preview">
+                        📋 {p.proyecto}
+                      </p>
+                    )}
                   </div>
 
                   <div className="card-footer">
@@ -286,13 +327,14 @@ export default function App() {
 
         {proyectosFiltrados.length === 0 && (
           <div className="empty-results glass-panel">
-            <p>No se encontraron obras con los términos o filtros seleccionados.</p>
+            <p>No se encontraron obras con los filtros seleccionados.</p>
             <button
               className="btn-clear-filters"
               onClick={() => {
                 setBusqueda('');
                 setFiltroSector('todos');
                 setFiltroTipo('todos');
+                setFiltroFirma('todos');
               }}
             >
               Restablecer Filtros
@@ -301,7 +343,7 @@ export default function App() {
         )}
       </section>
 
-      {/* Modal Panorámico Fullscreen adaptado a teléfono */}
+      {/* Modal Pantalla Completa con Detalle de Alcance */}
       {proyectoModal && (
         <div className="modal-backdrop" onClick={cerrarModal}>
           <div className="modal-window-fullscreen glass-panel" onClick={(e) => e.stopPropagation()}>
@@ -356,11 +398,33 @@ export default function App() {
                     {proyectoModal.tipo && (
                       <span className="badge-pill badge-type">{proyectoModal.tipo}</span>
                     )}
+                    {proyectoModal.esServiu && (
+                      <span className="badge-pill badge-serviu-pill">Marco SERVIU</span>
+                    )}
+                    {proyectoModal.elaboroProyecto && (
+                      <span className="badge-pill badge-design-pill">Diseño y Proyecto Elaborado</span>
+                    )}
                   </div>
 
                   <h2>{proyectoModal.nombre}</h2>
 
                   <div className="modal-specs-list">
+                    {/* Parámetro de Proyecto / Qué se hizo */}
+                    {proyectoModal.proyecto && (
+                      <div className="spec-row highlight-spec">
+                        <span className="spec-label">Alcance del Proyecto:</span>
+                        <span className="spec-value">{proyectoModal.proyecto}</span>
+                      </div>
+                    )}
+
+                    {/* Elaboración del proyecto */}
+                    <div className="spec-row">
+                      <span className="spec-label">Elaboración y Diseño Técnico:</span>
+                      <span className="spec-value">
+                        {proyectoModal.elaboroProyecto ? 'Sí, elaborado y proyectado por Q&T' : 'Ejecución de obra según bases de licitación'}
+                      </span>
+                    </div>
+
                     <div className="spec-row">
                       <span className="spec-label">Mandante:</span>
                       <span className="spec-value">{proyectoModal.mandante}</span>
