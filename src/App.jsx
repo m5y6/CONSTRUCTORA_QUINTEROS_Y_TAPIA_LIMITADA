@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import dataEmpresa from './data/empresa.json';
 import dataImagenes from './data/imagenes.json';
 import './App.css';
@@ -8,7 +8,7 @@ export default function App() {
   
   // Estados de filtrado y búsqueda
   const [busqueda, setBusqueda] = useState('');
-  const [ordenFecha, setOrdenFecha] = useState('desc'); // 'desc' = más reciente primero, 'asc' = más antigua
+  const [ordenFecha, setOrdenFecha] = useState('desc');
   const [filtroSector, setFiltroSector] = useState('todos');
   const [filtroTipo, setFiltroTipo] = useState('todos');
 
@@ -27,52 +27,13 @@ export default function App() {
       : [proyecto.imagen];
   };
 
-  // Función para abrir la dirección directamente en Google Maps
   const abrirEnMaps = (e, ubicacion) => {
     e.stopPropagation();
     const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ubicacion)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  // Carrusel Hero: selección inicial al azar
-  const [indiceHero, setIndiceHero] = useState(0);
-  const [indiceFotoHero, setIndiceFotoHero] = useState(0);
-  const [animandoHero, setAnimandoHero] = useState(false);
-
-  useEffect(() => {
-    if (proyectos.length > 0) {
-      const azar = Math.floor(Math.random() * proyectos.length);
-      setIndiceHero(azar);
-    }
-  }, [proyectos]);
-
-  const proyectoActual = proyectos[indiceHero] || proyectos[0];
-  const fotosActuales = obtenerImagenesProyecto(proyectoActual);
-
-  useEffect(() => {
-    setIndiceFotoHero(0);
-    if (fotosActuales.length <= 1) return;
-
-    const timer = setInterval(() => {
-      setIndiceFotoHero((prev) => (prev + 1) % fotosActuales.length);
-    }, 4000);
-
-    return () => clearInterval(timer);
-  }, [indiceHero, fotosActuales.length]);
-
-  const cambiarProyecto = (direccion) => {
-    setAnimandoHero(true);
-    setTimeout(() => {
-      if (direccion === 'sig') {
-        setIndiceHero((prev) => (prev + 1) % proyectos.length);
-      } else {
-        setIndiceHero((prev) => (prev - 1 + proyectos.length) % proyectos.length);
-      }
-      setAnimandoHero(false);
-    }, 250);
-  };
-
-  // Modal / Lightbox
+  // Modal / Lightbox a Pantalla Completa
   const [proyectoModal, setProyectoModal] = useState(null);
   const [indiceFotoModal, setIndiceFotoModal] = useState(0);
 
@@ -88,20 +49,17 @@ export default function App() {
 
   const fotosModal = proyectoModal ? obtenerImagenesProyecto(proyectoModal) : [];
 
-  // Lista de tipos de obras únicos para botones
   const tiposDisponibles = useMemo(() => {
     const tiposSet = new Set(proyectos.map((p) => p.tipo).filter(Boolean));
     return Array.from(tiposSet);
   }, [proyectos]);
 
-  // Auxiliar para extraer el año de inicio para el ordenamiento
   const extraerAnioInicio = (periodoStr) => {
     if (!periodoStr) return 0;
     const match = periodoStr.match(/\d{4}/);
     return match ? parseInt(match[0], 10) : 0;
   };
 
-  // Filtrado múltiple + Búsqueda por texto + Orden cronológico
   const proyectosFiltrados = useMemo(() => {
     const query = busqueda.trim().toLowerCase();
 
@@ -127,14 +85,13 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {/* Navbar */}
+      {/* Navbar con efecto Glassmorphism */}
       <header className="navbar">
         <div className="navbar-brand">
           <span className="brand-badge">Q&T</span>
           <span className="brand-text">{empresa.nombreCorto}</span>
         </div>
         <nav className="nav-links">
-          <a href="#destacado">Destacado</a>
           <a href="#nosotros">Nosotros</a>
           <a href="#obras">Catálogo</a>
           <a
@@ -148,36 +105,32 @@ export default function App() {
         </nav>
       </header>
 
-      
-
       {/* Resumen Institucional y MINVU */}
       <section id="nosotros" className="stats-section">
-        <div className="stats-container">
-          <div className="section-header">
-            <span className="section-tag">Trayectoria y Solidez</span>
-            <h2 className="section-heading">{empresa.nombre}</h2>
-            <p className="section-subtext">{empresa.presentacion}</p>
-          </div>
+        <div className="glass-panel main-intro-panel">
+          <span className="section-tag">Trayectoria y Solidez</span>
+          <h1 className="section-heading">{empresa.nombre}</h1>
+          <p className="section-subtext">{empresa.presentacion}</p>
+        </div>
 
-          <div className="metrics-grid">
-            {empresa.metricasClave.map((m, idx) => (
-              <div key={idx} className="metric-box">
-                <span className="metric-number">{m.valor}</span>
-                <span className="metric-label">{m.label}</span>
+        <div className="metrics-grid">
+          {empresa.metricasClave.map((m, idx) => (
+            <div key={idx} className="metric-box glass-panel">
+              <span className="metric-number">{m.valor}</span>
+              <span className="metric-label">{m.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="minvu-panel glass-panel">
+          <h3 className="minvu-title">Registros Vigentes MINVU</h3>
+          <div className="minvu-grid">
+            {empresa.registrosMinvu.map((r) => (
+              <div key={r.codigo} className="minvu-item">
+                <span className="minvu-code">{r.codigo} - {r.descripcion}</span>
+                <span className="minvu-cat">Categoría: {r.categoria}</span>
               </div>
             ))}
-          </div>
-
-          <div className="minvu-panel">
-            <h3 className="minvu-title">Registros Vigentes MINVU</h3>
-            <div className="minvu-grid">
-              {empresa.registrosMinvu.map((r) => (
-                <div key={r.codigo} className="minvu-item">
-                  <span className="minvu-code">{r.codigo} - {r.descripcion}</span>
-                  <span className="minvu-cat">Categoría: {r.categoria}</span>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -188,14 +141,14 @@ export default function App() {
           <span className="section-tag">Portafolio Integral</span>
           <h2 className="section-heading">Catálogo de Obras</h2>
 
-          {/* Barra de Búsqueda y Orden Cronológico */}
-          <div className="catalog-controls-bar">
+          {/* Barra de Búsqueda y Orden en Cápsula Translúcida */}
+          <div className="catalog-controls-bar glass-panel">
             <div className="search-input-wrapper">
               <span className="search-icon">🔍</span>
               <input
                 type="text"
                 className="search-input"
-                placeholder="Buscar por obra, mandante o dirección (ej. Bomberos, Melipilla, Serrano)..."
+                placeholder="Buscar por obra, mandante o dirección..."
                 value={busqueda}
                 onChange={(e) => setBusqueda(e.target.value)}
               />
@@ -220,8 +173,8 @@ export default function App() {
             </div>
           </div>
 
-          {/* Filtro Sector */}
-          <div className="filter-group">
+          {/* Filtro 1: Sector en Cápsula Translúcida */}
+          <div className="filter-zone glass-panel">
             <span className="filter-label">Sector:</span>
             <div className="filter-tabs">
               {[
@@ -240,9 +193,9 @@ export default function App() {
             </div>
           </div>
 
-          {/* Filtro Tipo de Obra */}
-          <div className="filter-group" style={{ marginTop: '10px' }}>
-            <span className="filter-label">Tipo:</span>
+          {/* Filtro 2: Tipo de Obra en Cápsula Translúcida */}
+          <div className="filter-zone glass-panel" style={{ marginTop: '12px' }}>
+            <span className="filter-label">Tipo de Obra:</span>
             <div className="filter-tabs">
               <button
                 onClick={() => setFiltroTipo('todos')}
@@ -262,7 +215,6 @@ export default function App() {
             </div>
           </div>
 
-          {/* Contador de resultados */}
           <div className="results-counter">
             Mostrando {proyectosFiltrados.length} {proyectosFiltrados.length === 1 ? 'obra' : 'obras'}
           </div>
@@ -275,7 +227,7 @@ export default function App() {
             return (
               <div
                 key={p.id}
-                className="project-card"
+                className="project-card glass-panel"
                 onClick={() => abrirModal(p)}
               >
                 <div className="card-thumb">
@@ -317,7 +269,7 @@ export default function App() {
         </div>
 
         {proyectosFiltrados.length === 0 && (
-          <div className="empty-results">
+          <div className="empty-results glass-panel">
             <p>No se encontraron obras con los términos o filtros seleccionados.</p>
             <button
               className="btn-clear-filters"
@@ -333,67 +285,94 @@ export default function App() {
         )}
       </section>
 
-      {/* Modal / Lightbox con Botón de Google Maps */}
+      {/* Modal Pantalla Completa (100% Ancho y Gran Escala) */}
       {proyectoModal && (
         <div className="modal-backdrop" onClick={cerrarModal}>
-          <div className="modal-window" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-window-fullscreen glass-panel" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={cerrarModal}>&times;</button>
 
-            <div className="modal-gallery">
-              <img
-                src={fotosModal[indiceFotoModal]}
-                alt={proyectoModal.nombre}
-                className="modal-photo"
-              />
-              {fotosModal.length > 1 && (
-                <>
-                  <button
-                    className="modal-nav prev"
-                    onClick={() => setIndiceFotoModal((prev) => (prev - 1 + fotosModal.length) % fotosModal.length)}
-                  >
-                    &#10094;
-                  </button>
-                  <button
-                    className="modal-nav next"
-                    onClick={() => setIndiceFotoModal((prev) => (prev + 1) % fotosModal.length)}
-                  >
-                    &#10095;
-                  </button>
-                  <div className="modal-dots">
-                    {fotosModal.map((_, i) => (
-                      <span
-                        key={i}
-                        className={`dot ${i === indiceFotoModal ? 'active' : ''}`}
-                        onClick={() => setIndiceFotoModal(i)}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
+            <div className="modal-content-grid">
+              {/* Columna Izquierda: Galería Panorámica */}
+              <div className="modal-gallery-fullscreen">
+                <img
+                  src={fotosModal[indiceFotoModal]}
+                  alt={proyectoModal.nombre}
+                  className="modal-photo-fullscreen"
+                />
 
-            <div className="modal-info">
-              <div className="info-badges" style={{ marginBottom: '10px' }}>
-                <span className={`badge-pill ${proyectoModal.categoria}`}>
-                  {proyectoModal.categoria === 'publico' ? 'Obra Pública' : 'Obra Privada'}
-                </span>
-                {proyectoModal.tipo && (
-                  <span className="badge-pill badge-type">{proyectoModal.tipo}</span>
+                {fotosModal.length > 1 && (
+                  <>
+                    <button
+                      className="modal-nav prev"
+                      onClick={() => setIndiceFotoModal((prev) => (prev - 1 + fotosModal.length) % fotosModal.length)}
+                    >
+                      &#10094;
+                    </button>
+                    <button
+                      className="modal-nav next"
+                      onClick={() => setIndiceFotoModal((prev) => (prev + 1) % fotosModal.length)}
+                    >
+                      &#10095;
+                    </button>
+                    
+                    {/* Tiras de Miniaturas */}
+                    <div className="modal-thumbnails-strip">
+                      {fotosModal.map((img, i) => (
+                        <div
+                          key={i}
+                          className={`thumb-item ${i === indiceFotoModal ? 'active' : ''}`}
+                          onClick={() => setIndiceFotoModal(i)}
+                        >
+                          <img src={img} alt="" />
+                        </div>
+                      ))}
+                    </div>
+                  </>
                 )}
               </div>
-              <h2>{proyectoModal.nombre}</h2>
-              <p><strong>Mandante:</strong> {proyectoModal.mandante}</p>
-              <p><strong>Ubicación:</strong> {proyectoModal.ubicacion}</p>
-              {proyectoModal.superficie && <p><strong>Superficie:</strong> {proyectoModal.superficie}</p>}
-              <p><strong>Período de ejecución:</strong> {proyectoModal.periodo}</p>
 
-              <div className="modal-actions">
-                <button
-                  className="btn-maps modal-maps-btn"
-                  onClick={(e) => abrirEnMaps(e, proyectoModal.ubicacion)}
-                >
-                  📍 Ir a Google Maps
-                </button>
+              {/* Columna Derecha: Ficha Técnica */}
+              <div className="modal-info-fullscreen">
+                <div className="info-badges" style={{ marginBottom: '14px' }}>
+                  <span className={`badge-pill ${proyectoModal.categoria}`}>
+                    {proyectoModal.categoria === 'publico' ? 'Obra Pública' : 'Obra Privada'}
+                  </span>
+                  {proyectoModal.tipo && (
+                    <span className="badge-pill badge-type">{proyectoModal.tipo}</span>
+                  )}
+                </div>
+
+                <h2>{proyectoModal.nombre}</h2>
+
+                <div className="modal-specs-list">
+                  <div className="spec-row">
+                    <span className="spec-label">Mandante:</span>
+                    <span className="spec-value">{proyectoModal.mandante}</span>
+                  </div>
+                  <div className="spec-row">
+                    <span className="spec-label">Ubicación:</span>
+                    <span className="spec-value">📍 {proyectoModal.ubicacion}</span>
+                  </div>
+                  {proyectoModal.superficie && (
+                    <div className="spec-row">
+                      <span className="spec-label">Superficie:</span>
+                      <span className="spec-value">📐 {proyectoModal.superficie}</span>
+                    </div>
+                  )}
+                  <div className="spec-row">
+                    <span className="spec-label">Período de ejecución:</span>
+                    <span className="spec-value">{proyectoModal.periodo}</span>
+                  </div>
+                </div>
+
+                <div className="modal-actions-bar">
+                  <button
+                    className="btn-maps modal-maps-btn"
+                    onClick={(e) => abrirEnMaps(e, proyectoModal.ubicacion)}
+                  >
+                    📍 Abrir en Google Maps
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -401,7 +380,7 @@ export default function App() {
       )}
 
       {/* Footer */}
-      <footer className="footer">
+      <footer className="footer glass-panel">
         <p className="footer-title">{empresa.nombre} — RUT: {empresa.rut}</p>
         <p className="footer-meta">{empresa.direccion} | Fono: {empresa.telefono}</p>
         <p className="footer-copy">© {new Date().getFullYear()} Constructora Quinteros y Tapia Limitada.</p>
